@@ -1,11 +1,12 @@
 import { MarketIndex } from "@/lib/types";
+import { Sparkline } from "./sparkline";
 
 export function IndexCard({ index }: { index: MarketIndex }) {
   const isPositive = index.change >= 0;
 
   return (
     <div className="rounded-xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-900">
-      <div className="flex items-center justify-between">
+      <div className="flex items-start justify-between">
         <div>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">
             {index.symbol}
@@ -14,6 +15,7 @@ export function IndexCard({ index }: { index: MarketIndex }) {
             {index.name}
           </p>
         </div>
+        <Sparkline data={index.sparkline} positive={isPositive} />
       </div>
       <div className="mt-3">
         <p className="text-2xl font-bold tabular-nums text-zinc-900 dark:text-zinc-100">
